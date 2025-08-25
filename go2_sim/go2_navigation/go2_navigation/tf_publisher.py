@@ -46,7 +46,14 @@ class OdomTransformBroadcaster(Node):
         t_base_footprint = copy.deepcopy(t_odom)
         t_base_footprint.header.frame_id = "base_link" 
         t_base_footprint.child_frame_id = "base_footprint"
-        t_base_footprint.transform.translation.z = 0.0 
+        t_base_footprint.transform.translation.x = 0.0
+        t_base_footprint.transform.translation.y = 0.0
+        t_base_footprint.transform.translation.z = 0.0
+
+        t_base_footprint.transform.rotation.x = 0.0
+        t_base_footprint.transform.rotation.y = 0.0
+        t_base_footprint.transform.rotation.z = 0.0
+        t_base_footprint.transform.rotation.w = 1.0
 
         # Broadcast the transforms
         # odom -> base_link based on ground truth plugin
