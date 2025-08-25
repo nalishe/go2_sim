@@ -191,6 +191,132 @@
         </sensor>
     </gazebo>
 
+
+    <joint name="l2_laser_joint" type="fixed">
+        <parent link="trunk"/>
+        <child  link="l2_laser_link"/>
+        <origin xyz="0.06 0.0 0.12" rpy="0 0 0"/>
+    </joint>
+
+    <link name="l2_laser_link">
+        <inertial><mass value="1e-4"/><origin xyz="0 0 0" rpy="0 0 0"/>
+            <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6"/></inertial>
+        <visual><origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry><cylinder radius="0.03" length="0.06"/></geometry></visual>
+        <collision><origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry><cylinder radius="0.03" length="0.06"/></geometry></collision>
+    </link>
+
+    <gazebo reference="l2_laser_link">
+        <sensor type="ray" name="unilidar_l2">
+            <pose>0 0 0 0 0 0</pose>
+            <visualize>false</visualize>
+            <update_rate>4.5</update_rate>
+            <ray>
+                <scan>
+                    <horizontal>
+                    <samples>720</samples><resolution>1</resolution>
+                    <min_angle>-3.14159</min_angle><max_angle>3.14159</max_angle>
+                    </horizontal>
+                    <vertical>
+                    <samples>48</samples><resolution>1</resolution>
+                    <min_angle>-0.872665</min_angle><max_angle>0.872665</max_angle>
+                    </vertical>
+                </scan>
+                <range><min>0.05</min><max>30.0</max><resolution>0.005</resolution></range>
+                <noise type="gaussian"><mean>0.0</mean><stddev>0.008</stddev></noise>
+            </ray>
+            <plugin name="l2_lidar_pc2" filename="libgazebo_ros_ray_sensor.so">
+            <output_type>sensor_msgs/PointCloud2</output_type>
+            <frame_name>l2_laser_link</frame_name>
+            <ros><remapping>~/out:=/unilidar/cloud</remapping></ros>
+            </plugin>
+        </sensor>
+    </gazebo>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- drunk -->
+    <!-- <joint name="laser_joint" type="fixed">
+        <parent link="trunk"/>
+        <child  link="laser_link"/>
+        <origin xyz="0.05 0.0 0.10" rpy="0 0 0"/> 
+        </joint>
+
+    <link name="laser_link">
+        <inertial>
+            <mass value="0.02"/> 
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+
+            <inertia ixx="5.25e-06" ixy="0" ixz="0" iyy="5.25e-06" iyz="0" izz="4.5e-06"/>
+        </inertial>
+        <visual> 
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry><cylinder radius="0.03" length="0.06"/></geometry>
+            <material name="black"/>
+        </visual>
+    </link>
+
+    <gazebo reference="laser_link">
+        <sensor type="ray" name="unilidar_l2">
+            <update_rate>5.5</update_rate>  
+            <pose>0 0 0 0 0 0</pose>
+
+            <ray>
+            <scan>
+                <horizontal>
+                <samples>900</samples>      
+                <resolution>1</resolution>
+                <min_angle>-3.14159</min_angle>
+                <max_angle> 3.14159</max_angle>
+                </horizontal>
+                <vertical>
+                <samples>96</samples>       
+                <resolution>1</resolution>
+                <min_angle>-0.872665</min_angle>
+                <max_angle> 0.872665</max_angle> 
+                </vertical>
+            </scan>
+
+            <range>
+                <min>0.05</min>
+                <max>30.0</max>
+                <resolution>0.005</resolution>
+            </range>
+
+            <noise type="gaussian">
+                <mean>0.0</mean>
+                <stddev>0.008</stddev>
+            </noise>
+            </ray>
+
+            <plugin name="lidar_pc2" filename="libgazebo_ros_ray_sensor.so">
+            <output_type>sensor_msgs/PointCloud2</output_type>
+            <frame_name>laser_link</frame_name>
+            <ros>
+                <remapping>~/out:=/unilidar/cloud</remapping>
+            </ros>
+            </plugin>
+        </sensor>
+    </gazebo> -->
+
+
+
+
+
     <gazebo>
         <plugin name="p3d_ground_truth" filename="libgazebo_ros_p3d.so">
             <!-- <robotNamespace>${g_robot_name}</robotNamespace> -->
