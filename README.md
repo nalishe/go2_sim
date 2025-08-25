@@ -1,3 +1,3 @@
 # go2_sim
 
-just for test for go2 in gazebo classic
+just a test for go2 in gazebo classic
