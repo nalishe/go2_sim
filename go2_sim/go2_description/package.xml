@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>go2_description</name>
+  <version>0.1.0</version>
+  <description>Unitree GO2 robot description for ROS 2 + Gazebo Classic.</description>
+
+  <maintainer email="nalishe9105@gmail.com">nalishe</maintainer>
+  <license>Apache-2.0</license>
+
+  <!-- 這是純描述套件，不含程式碼，ament_cmake 足夠 -->
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <!-- 讓 xacro/urdf 可以被其他套件發現 -->
+  <exec_depend>xacro</exec_depend>
+  <exec_depend>urdf</exec_depend>
+
+  <!-- 若你會在 RViz 顯示，可宣告以下（可選） -->
+  <exec_depend>robot_state_publisher</exec_depend>
+  <exec_depend>joint_state_publisher</exec_depend>
+
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_common</test_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>

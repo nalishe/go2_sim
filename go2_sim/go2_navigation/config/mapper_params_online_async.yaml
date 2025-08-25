@@ -1,0 +1,76 @@
+slam_toolbox: # SLAM工具箱設定
+  ros__parameters: # ROS參數
+
+    # 插件參數
+    solver_plugin: solver_plugins::CeresSolver # 求解器插件
+    ceres_linear_solver: SPARSE_NORMAL_CHOLESKY # Ceres線性求解器
+    ceres_preconditioner: SCHUR_JACOBI # Ceres預條件器
+    ceres_trust_strategy: LEVENBERG_MARQUARDT # Ceres信賴區策略
+    ceres_dogleg_type: TRADITIONAL_DOGLEG # Ceres Dogleg類型
+    ceres_loss_function: None # Ceres損失函數
+
+    # ROS參數
+    odom_frame: odom # 里程計座標系
+    map_frame: map # 地圖座標系
+    base_frame: base_link # 機器人基座座標系
+    scan_topic: /scan # 雷射掃描主題
+    use_map_saver: true # 啟用地圖儲存
+    mode: mapping #localization # 運作模式（mapping或localization）
+
+    # 若要在特定位置或停靠點繼續地圖，兩者互斥，若有給定位置則優先
+    #map_file_name: test_steve # 地圖檔案名稱
+    # map_start_pose: [0.0, 0.0, 0.0] # 地圖起始位姿
+    #map_start_at_dock: true # 是否從停靠點開始
+
+    debug_logging: false # 除錯日誌
+    throttle_scans: 1 # 掃描節流
+    transform_publish_period: 0.02 #if 0 never publishes odometry # TF發布週期（0則不發布）
+    map_update_interval: 2.0 # 地圖更新間隔
+    resolution: 0.05 # 地圖解析度
+    restamp_tf: false # 是否重蓋TF時間戳
+    min_laser_range: 0.0 #for rastering images # 最小雷射距離
+    max_laser_range: 20.0 #for rastering images # 最大雷射距離
+    minimum_time_interval: 0.2 # 最小時間間隔
+    transform_timeout: 0.2 # TF超時
+    tf_buffer_duration: 30.0 # TF緩衝區時長
+    stack_size_to_use: 40000000 #// program needs a larger stack size to serialize large maps # 堆疊大小
+    enable_interactive_mode: true # 啟用互動模式
+
+    # 一般參數
+    use_scan_matching: true # 啟用掃描匹配
+    use_scan_barycenter: true # 使用掃描重心
+    minimum_travel_distance: 0.2 # 最小移動距離
+    minimum_travel_heading: 0.2 # 最小移動角度
+    scan_buffer_size: 20 # 掃描緩衝區大小
+    scan_buffer_maximum_scan_distance: 15.0 # 掃描緩衝最大距離
+    link_match_minimum_response_fine: 0.05  # 精細連結匹配最小響應
+    link_scan_maximum_distance: 2.0 # 連結掃描最大距離
+    loop_search_maximum_distance: 4.0 # 閉環搜尋最大距離
+    do_loop_closing: true # 啟用閉環
+    loop_match_minimum_chain_size: 8 # 閉環匹配最小鏈長
+    loop_match_maximum_variance_coarse: 3.0 # 閉環粗略匹配最大變異
+    loop_match_minimum_response_coarse: 0.25 # 閉環粗略匹配最小響應
+    loop_match_minimum_response_fine: 0.35 # 閉環精細匹配最小響應
+
+    # 相關性參數
+    correlation_search_space_dimension: 0.5 # 搜尋空間維度
+    correlation_search_space_resolution: 0.01 # 搜尋空間解析度
+    correlation_search_space_smear_deviation: 0.1 # 搜尋空間模糊偏差
+
+    # 相關性參數 - 閉環參數
+    loop_search_space_dimension: 8.0 # 閉環搜尋空間維度
+    loop_search_space_resolution: 0.05 # 閉環搜尋空間解析度
+    loop_search_space_smear_deviation: 0.03 # 閉環搜尋空間模糊偏差
+
+    # 掃描匹配參數
+    distance_variance_penalty: 0.3      # 距離變異懲罰
+    angle_variance_penalty: 0.8    # 角度變異懲罰
+
+    fine_search_angle_offset: 0.00349     # 精細搜尋角度偏移
+    coarse_search_angle_offset: 0.349   # 粗略搜尋角度偏移
+    coarse_angle_resolution: 0.0349        # 粗略角度解析度
+    minimum_angle_penalty: 0.7 # 最小角度懲罰
+    minimum_distance_penalty: 0.3 # 最小距離懲罰
+    use_response_expansion: true # 啟用響應擴展
+    min_pass_through: 2 # 最小通過次數
+    occupancy_threshold: 0.1 # 佔據閾值
