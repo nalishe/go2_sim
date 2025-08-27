@@ -16,7 +16,6 @@ setup(
         ('share/' + package_name + '/map' , ['map/map.yaml']),
         ('share/' + package_name + '/map' , ['map/map.pgm']),
         ('share/' + package_name, ['launch/navigation_gpt.launch.py']),
-        ('share/' + package_name, ['launch/online_async_launch.py']),
         ('share/' + package_name + '/config' , ['config/mapper_params_online_async.yaml']),
 
 
@@ -34,7 +33,8 @@ setup(
     entry_points={
         'console_scripts': [
             'nav_tf_publisher = go2_navigation.tf_publisher:main',
-            'static_map_publisher = go2_navigation.static_map_publisher:main'
+            'static_map_publisher = go2_navigation.static_map_publisher:main',
+            'odom_to_path = go2_navigation.odom_to_path:main',
         ],
     },
 )
