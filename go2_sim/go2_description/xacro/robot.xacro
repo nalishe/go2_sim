@@ -192,7 +192,7 @@
     </gazebo>
 
 
-    <joint name="l2_laser_joint" type="fixed">
+    <!-- <joint name="l2_laser_joint" type="fixed">
         <parent link="trunk"/>
         <child  link="l2_laser_link"/>
         <origin xyz="0.06 0.0 0.12" rpy="0 0 0"/>
@@ -232,7 +232,7 @@
             <ros><remapping>~/out:=/unilidar/cloud</remapping></ros>
             </plugin>
         </sensor>
-    </gazebo>
+    </gazebo> -->
 
 
 
