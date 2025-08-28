@@ -30,7 +30,7 @@ def generate_launch_description():
 
     # Position and orientation
     # [X, Y, Z]
-    position = [0, 0.0, 0.6]
+    position = [0, 0.0, 0.7]
     # [Roll, Pitch, Yaw]
     orientation = [0.0, 0.0, 0.0]
     # Base Name or robot
@@ -67,6 +67,13 @@ def generate_launch_description():
         package='go2_navigation',
         executable='nav_tf_publisher',
         name='odom_transform_publisher',
+        output='screen'
+    )
+
+    odom_to_path_node = Node(
+        package='go2_navigation',
+        executable='odom_to_path',
+        name='odom_to_path',
         output='screen'
     )
 
@@ -148,6 +155,7 @@ def generate_launch_description():
             visualize_robot,
             spawn_robot,
             odom_tf_publisher_node,
+            odom_to_path_node,
             # static_map_publisher_node
             # map_publisher_node,
             # RegisterEventHandler(
