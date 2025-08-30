@@ -15,7 +15,6 @@ setup(
         ('share/' + package_name + '/xml' , ['xml/go2_bt.xml']),
         ('share/' + package_name + '/map' , ['map/map.yaml']),
         ('share/' + package_name + '/map' , ['map/map.pgm']),
-        ('share/' + package_name, ['launch/navigation_gpt.launch.py']),
         ('share/' + package_name + '/config' , ['config/mapper_params_online_async.yaml']),
 
 
